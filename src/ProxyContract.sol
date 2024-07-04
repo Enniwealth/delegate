@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-contract ContractA {
+contract ProxyContract {
     uint256 public number;
     
     address callee;
@@ -11,10 +11,8 @@ contract ContractA {
     }
 
     fallback() external {
-        uint256 newNumber = 12;
-        (bool success, bytes memory data) = callee.delegatecall(
-            abi.encodeWithSignature("setNumber(uint256)", newNumber)
-        );
+        
+        (bool success, bytes memory data) = callee.delegatecall(msg.data);
         require(success, "call failed");
         
     }

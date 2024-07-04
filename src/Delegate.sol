@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-contract ContractB {
+contract Delegate {
    uint256 public number;
     
     address callee;
